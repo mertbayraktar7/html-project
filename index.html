@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f8f9fa; margin: 0; padding: 0; }
+        header { background-color: #ffffff; padding: 20px 40px; border-bottom: 1px solid #dee2e6; display: flex; justify-content: space-between; align-items: center; }
+        .header-titles h1 { margin: 0; font-size: 28px; color: #212529; }
+        .header-titles h2 { margin: 5px 0 0 0; font-size: 18px; color: #6c757d; font-weight: normal; }
+        .task-button { background-color: #0d6efd; color: white; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+        .task-button:hover { background-color: #0b5ed7; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        .content { max-width: 900px; margin: 50px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .info-section h3 { border-bottom: 2px solid #0d6efd; display: inline-block; padding-bottom: 5px; color: #212529; }
+        .info-grid { display: grid; grid-template-columns: 150px 1fr; gap: 15px; margin-top: 20px; font-size: 18px; }
+        .label { font-weight: bold; color: #495057; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-titles">
+        <h1>Home Page</h1>
+        <h2>JavaScript Assignment</h2>
+    </div>
+    <a href="tasks.html" class="task-button">Go to Task Page →</a>
+</header>
+
+<div class="container">
+    <div class="content">
+        <div class="info-section">
+            <h3>Personal Information</h3>
+            <div class="info-grid">
+                <div class="label">Name:</div>
+                <div>MERT BAYRAKTAR</div>
+                
+                <div class="label">Profession:</div>
+                <div>Student</div>
+                
+                <div class="label">Location:</div>
+                <div>Riga, Latvia</div>
+                
+                <div class="label">Skills:</div>
+                <div>HTML, CSS, JavaScript, Python</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

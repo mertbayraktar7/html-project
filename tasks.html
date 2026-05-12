@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Assignment Tasks</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .back-nav { width: 100%; max-width: 650px; margin-bottom: 10px; }
+        .back-btn { text-decoration: none; color: #0d6efd; font-weight: bold; font-size: 14px; }
+        .card { background: white; width: 100%; max-width: 650px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #1a73e8; border-bottom: 2px solid #e8f0fe; padding-bottom: 10px; margin-top: 0; }
+        .section { margin-bottom: 20px; padding: 15px; border: 1px solid #eee; border-radius: 8px; }
+        label { font-weight: bold; font-size: 14px; color: #5f6368; display: block; margin-bottom: 5px; }
+        input { width: calc(100% - 22px); padding: 10px; margin: 5px 0 15px 0; border: 1px solid #ddd; border-radius: 5px; font-size: 15px; }
+        .btn-group { display: flex; flex-wrap: wrap; gap: 8px; }
+        button { padding: 9px 14px; border: none; border-radius: 6px; background-color: #1a73e8; color: white; cursor: pointer; transition: 0.2s; font-size: 13px; }
+        button:hover { background-color: #1557b0; }
+        #result-display { margin-top: 20px; padding: 15px; background-color: #202124; color: #34a853; border-radius: 6px; min-height: 40px; font-family: 'Courier New', monospace; font-size: 16px; word-break: break-all; }
+    </style>
+</head>
+<body>
+
+<div class="back-nav">
+    <a href="index.html" class="back-btn">← Back to Home Page</a>
+</div>
+
+<div class="card">
+    <h2>JS Practice Dashboard</h2>
+    
+    <div class="section">
+        <label>String Operations (Tasks 1-6):</label>
+        <input type="text" id="textInp" placeholder="Type something...">
+        <div class="btn-group">
+            <button onclick="execute(1)">Reverse</button>
+            <button onclick="execute(2)">3rd & 4th Char</button>
+            <button onclick="execute(3)">Longest Word</button>
+            <button onclick="execute(4)">Lowercase</button>
+            <button onclick="execute(5)">Uppercase</button>
+            <button onclick="execute(6)">Count Words & Symbols</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <label>Array Operations (Tasks 7-12):</label>
+        <div class="btn-group"><button onclick="execute(7)">Run Array Demo</button></div>
+    </div>
+
+    <div class="section">
+        <label>Math Functions (Tasks 13-17):</label>
+        <div style="display:flex; gap:10px;">
+            <input type="number" id="v1" placeholder="Num 1" style="width: 50%;">
+            <input type="number" id="v2" placeholder="Num 2" style="width: 50%;">
+        </div>
+        <div class="btn-group">
+            <button onclick="execute(13)">Arithmetic Ops</button>
+            <button onclick="execute(17)">Check Even/Odd</button>
+        </div>
+    </div>
+
+    <div class="section">
+        <label>Forms & Objects (Tasks 18-20):</label>
+        <input type="text" id="fName" placeholder="Name Field">
+        <input type="text" id="fJob" placeholder="Job Field">
+        <div class="btn-group">
+            <button onclick="execute(18)">Display Form Data</button>
+            <button onclick="execute(20)">Create Object</button>
+        </div>
+    </div>
+
+    <div id="result-display">Result will be shown here...</div>
+</div>
+
+<script>
+    function execute(taskID) {
+        const display = document.getElementById('result-display');
+        const strVal = document.getElementById('textInp').value;
+        const n1 = parseFloat(document.getElementById('v1').value);
+        const n2 = parseFloat(document.getElementById('v2').value);
+
+        switch(taskID) {
+            case 1: display.innerText = "Reversed: " + strVal.split('').reverse().join(''); break;
+            case 2: display.innerText = "3rd: " + (strVal[2] || '?') + " | 4th: " + (strVal[3] || '?'); break;
+            case 3: 
+                let longest = strVal.split(' ').reduce((a, b) => a.length >= b.length ? a : b);
+                display.innerText = "Longest: " + longest; break;
+            case 4: display.innerText = "Lower: " + strVal.toLowerCase(); break;
+            case 5: display.innerText = "Upper: " + strVal.toUpperCase(); break;
+            case 6: 
+                let wCount = strVal.trim() === "" ? 0 : strVal.trim().split(/\s+/).length;
+                let sCount = (strVal.match(/[^a-zA-Z0-9\s]/g) || []).length;
+                display.innerText = "Words: " + wCount + " | Symbols: " + sCount; break;
+            case 7:
+                let myArr = [10, 20, 30, 40, 50];
+                alert("Task 9 (Last Element): " + myArr[myArr.length-1]);
+                let mappedArr = myArr.map(x => x * 2);
+                myArr.splice(0, 1);
+                display.innerText = "3rd Element: " + myArr[2] + " | Mapped: " + mappedArr; break;
+            case 13:
+                let op = prompt("Enter (+, -, *, /):");
+                let res = (op=='+') ? n1+n2 : (op=='*') ? n1*n2 : (op=='/') ? n1/n2 : n1-n2;
+                display.innerText = "Result: " + res; break;
+            case 17: display.innerText = "N1 is " + (n1 % 2 === 0 ? "Even" : "Odd"); break;
+            case 18:
+                display.innerText = "Data: " + document.getElementById('fName').value + " / " + document.getElementById('fJob').value; break;
+            case 20:
+                const obj = { name: document.getElementById('fName').value, job: document.getElementById('fJob').value };
+                display.innerText = "Object: " + JSON.stringify(obj); break;
+        }
+    }
+</script>
+</body>
+</html>
